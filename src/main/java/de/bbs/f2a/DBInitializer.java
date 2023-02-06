@@ -28,8 +28,8 @@ public class DBInitializer {
         System.out.println("Init DB");
         try (Connection connection = dataSource.getConnection()) {
             try (Statement stmt = connection.createStatement()) {
-                stmt.execute("CREATE TABLE users (name VARCHAR(255), password name VARCHAR(255))");
-                stmt.execute("INSERT INTO users('name', 'password') VALUES ('peter', )")
+                stmt.execute("CREATE TABLE users (name VARCHAR(255), password VARCHAR(255))");
+                stmt.execute("INSERT INTO users(name, password) VALUES ('peter', '8J+NlfCfjZXwn42VIFN1cGVyIGdlaGVpbWVyIFRleHQg8J+NlfCfjZXwn42V')");
             } catch (SQLException e) {
                 System.out.println("Error processing statement " + e);
             }
