@@ -1,3 +1,5 @@
+Simple school project involving a pong style game with pizzas
+
 # pizza-flight
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
