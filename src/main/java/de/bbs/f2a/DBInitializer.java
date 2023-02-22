@@ -21,7 +21,6 @@ public class DBInitializer
 {
 
   @Inject DataSource dataSource;
-
   @Inject DataService dataService;
 
   void onStart( @Observes StartupEvent ev )
