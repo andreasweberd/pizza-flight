@@ -97,7 +97,7 @@ public class LoginResource
               salt,
               1, 128);
 
-      SecretKeyFactory f = SecretKeyFactory.getInstance("SHA256");
+      SecretKeyFactory f = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
       byte[] hash = f.generateSecret(spec).getEncoded();
       Base64.Encoder enc = Base64.getEncoder();
       return enc.encodeToString(hash);
