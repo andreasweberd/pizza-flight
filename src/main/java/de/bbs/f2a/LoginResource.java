@@ -62,11 +62,19 @@ public class LoginResource
       throw new RuntimeException( "Login failed" );
   }
 
+  @GET
+  @Path( "/tokenOK" )
+  @Produces( MediaType.TEXT_PLAIN )
+  public String tokenOK(@QueryParam("user") String username, @QueryParam("token")String tokenInput )
+  {
+    Benutzer b = dataService.getBenutzerData( username );
+    String token = generateToken(null, b);
+    if(token.equals(tokenInput))return "ok";
+    return "";
+  }
+
   private String checkPasswordAndGenerateToken( String user, String password )
   {
-
-    System.out.println(dataService.getBenutzerData());
-    System.out.println(dataService.getAuthData());
 
     Benutzer b = dataService.getBenutzerData( user );
     if ( b == null )
@@ -88,8 +96,6 @@ public class LoginResource
   private String generateToken( final List<Auth> a, final Benutzer b )
   {
     try {
-
-
 
       char[] idAsCharArray = String.valueOf(b.getId()).toCharArray();
       byte[] salt = String.valueOf(b.getId()).getBytes(StandardCharsets.UTF_8);
