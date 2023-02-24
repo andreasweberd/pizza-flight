@@ -1,5 +1,7 @@
 package de.bbs.f2a;
 
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 import javax.inject.Inject;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -12,6 +14,12 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
+import java.util.Base64;
 import java.util.List;
 
 import de.bbs.f2a.model.Auth;
@@ -79,7 +87,26 @@ public class LoginResource
 
   private String generateToken( final List<Auth> a, final Benutzer b )
   {
-    return "8J+NlfCfjZXwn42VIFN1cGVyIGdlaGVpbWVyIFRleHQg8J+NlfCfjZXwn42V";
+    try {
+
+
+
+      char[] idAsCharArray = String.valueOf(b.getId()).toCharArray();
+      byte[] salt = String.valueOf(b.getId()).getBytes(StandardCharsets.UTF_8);
+      KeySpec spec = new PBEKeySpec(idAsCharArray,
+              salt,
+              1, 128);
+
+      SecretKeyFactory f = SecretKeyFactory.getInstance("SHA1");
+      byte[] hash = f.generateSecret(spec).getEncoded();
+      Base64.Encoder enc = Base64.getEncoder();
+      return enc.encodeToString(hash);
+
+
+
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
   }
 
 }
