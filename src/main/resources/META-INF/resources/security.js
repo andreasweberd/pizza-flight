@@ -1,11 +1,8 @@
 
 function tokenOK() {
-     jQuery.ajax({
-            url: '/login/tokenOK?user=dummy&token='+ new URLSearchParams(window.location).get('token'),
-            success: function (result) {
-                console.log($(result));
-                if (result.isOk == false) alert(result.message);
-            },
-            async: false
-        });
+     var t = new URLSearchParams(window.location.search).get('token');
+     console.log("token ok? " + t);
+     return $.getJSON( '/login/tokenOK?user=dummy&token='+ t, function( data ) {
+          console.log(data);
+     });
 }

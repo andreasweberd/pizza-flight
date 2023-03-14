@@ -385,10 +385,13 @@ var Game = {
 };
 
 
-if(tokenOK()){
-    Pong = Object.assign({}, Game);
-    Pong.initialize();
-}else{
-    $("#msg").text( "Bitte zuerst einloggen!");
-}
+tokenOK().then(function(val){
+   if(val.isOK === true){
+       Pong = Object.assign({}, Game);
+       Pong.initialize();
+   } else{
+       $("#msg").text( "Bitte zuerst einloggen!");
+   }
+});
+
 
