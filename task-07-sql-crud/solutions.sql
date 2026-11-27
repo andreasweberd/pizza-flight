@@ -1,5 +1,5 @@
 -- =============================================================================
--- Task 07 — CRUD Statements (INSERT, UPDATE, DELETE)
+-- Task 07 - CRUD Statements (INSERT, UPDATE, DELETE)
 -- Test on a fresh database (run database/schema_and_seed.sql first to reset).
 -- =============================================================================
 

@@ -1,5 +1,5 @@
 -- =============================================================================
--- Task 04 — Basic SQL Queries
+-- Task 04 - Basic SQL Queries
 -- Write your SQL query under each comment and test it in DBeaver!
 -- =============================================================================
 

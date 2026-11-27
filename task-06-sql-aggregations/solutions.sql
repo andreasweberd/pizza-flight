@@ -1,5 +1,5 @@
 -- =============================================================================
--- Task 06 — SQL Aggregations & Grouping
+-- Task 06 - SQL Aggregations & Grouping
 -- Write your SQL query under each comment and test it in DBeaver!
 -- =============================================================================
 

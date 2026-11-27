@@ -1,5 +1,5 @@
 -- =============================================================================
--- Task 08 — DDL & Constraints (CREATE TABLE, ALTER TABLE)
+-- Task 08 - DDL & Constraints (CREATE TABLE, ALTER TABLE)
 -- Test on a fresh database (run database/schema_and_seed.sql first to reset).
 -- =============================================================================
 

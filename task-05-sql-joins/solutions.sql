@@ -1,5 +1,5 @@
 -- =============================================================================
--- Task 05 — SQL Queries with Joins
+-- Task 05 - SQL Queries with Joins
 -- Write your SQL query under each comment and test it in DBeaver!
 -- =============================================================================
 

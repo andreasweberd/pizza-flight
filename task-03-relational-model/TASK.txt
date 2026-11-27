@@ -1,0 +1,71 @@
+==============================================================================
+TASK 03 - RELATIONAL MODEL (RELATIONAL SCHEMA & DIAGRAM)
+==============================================================================
+
+OBJECTIVE
+------------------------------------------------------------------------------
+Transform your Entity-Relationship Model from Task 02 into a Relational Model
+(tables, columns, primary keys, foreign keys, and resolved M:N relationships)
+ready to be implemented in a relational database.
+
+REMINDER: Do NOT look inside the database/ folder yet! Derive the relational
+model from your own ERM in Task 02 first.
+
+
+TRANSFORMATION RULES TO APPLY
+------------------------------------------------------------------------------
+Follow the standard ERM -> Relational Model mapping rules:
+
+1. Entities -> Tables
+   - Each entity type becomes a table with all of its attributes as columns.
+   - UNDERLINE the Primary Key (PK) column(s) of every table.
+
+2. 1:N Relationships -> Foreign Keys
+   - Add the Primary Key of the 1-side table as a Foreign Key (FK) column on
+     the N-side table.
+   - Clearly mark every Foreign Key (e.g., write "(FK)" or use a dashed
+     underline) and draw an arrow pointing from the FK to the referenced PK.
+   - Note which Foreign Keys may be NULL (for example, guest orders without
+     a registered customer).
+
+3. M:N Relationships -> Junction (Associative) Tables
+   - Every M:N relationship MUST be resolved into its own junction table!
+   - Include the Primary Keys of both connected tables as Foreign Keys
+     (forming a composite Primary Key, or using a dedicated surrogate PK).
+   - Move any relationship attributes (quantity, last_restocked, unit_price)
+     into the junction table.
+   - Check all three M:N relationships from Task 02:
+       * Pizza <-> Topping
+       * Machine <-> Pizza (inventory/stock)
+       * Order <-> Pizza (order items)
+
+4. Check Normalization (up to 3NF)
+   - 1NF: No repeating groups or multi-valued attributes.
+   - 2NF: No partial dependencies on part of a composite key.
+   - 3NF: No transitive dependencies between non-key columns.
+
+
+WHAT YOUR DIAGRAM SHOULD SHOW
+------------------------------------------------------------------------------
+Draw each table as a clean box with:
+  - The table name in the header
+  - All column names listed inside
+  - Primary Keys clearly marked (PK / underlined)
+  - Foreign Keys clearly marked (FK) with arrows connecting each Foreign Key
+    to the Primary Key it references
+
+
+SUBMISSION REQUIREMENTS
+------------------------------------------------------------------------------
+1. Draw the Relational Model BY HAND on clean paper (A4 or A3 recommended).
+   Do NOT use a digital diagram tool.
+2. Take a sharp, well-lit, upright photo of your drawing.
+   All table names, column names, PK/FK markings, and arrows MUST be clearly
+   readable.
+3. Save the photo in this folder (task-03-relational-model/) as:
+       relational_model.jpg   or   relational_model.png
+4. Commit and push to YOUR OWN BRANCH (never master):
+
+       git add task-03-relational-model/relational_model.jpg
+       git commit -m "Complete task 03: relational model"
+       git push
