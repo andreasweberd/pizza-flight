@@ -1,0 +1,58 @@
+# Pizza Flight — Sample H2 Database Guide
+
+This folder contains the ready-to-use **H2** database for Tasks 4–8:
+
+- `pizza_flight.mv.db` — Pre-populated H2 (2.x) embedded database file.
+- `schema_and_seed.sql` — Full SQL script to recreate or reset the database at any time.
+
+---
+
+## Connecting with DBeaver
+
+1. Open **DBeaver**.
+2. Click **Database → New Database Connection** (or the plug icon `+` in the top-left toolbar).
+3. Search for **H2 Embedded** (make sure it says **Embedded**, not Server) and click **Next**.
+4. In the **Path** field, select the file `pizza_flight.mv.db` inside this `database/` folder — **and remove the `.mv.db` extension** from the path!
+   - Example (Windows): `C:\Users\yourname\pizza-flight\database\pizza_flight`
+   - Example (macOS / Linux): `/home/yourname/pizza-flight/database/pizza_flight`
+   - *(If you leave `.mv.db` at the end, H2 will create a brand-new empty file called `pizza_flight.mv.db.mv.db` instead of opening the existing database!)*
+5. Authentication:
+   - **Username:** `sa`
+   - **Password:** *(leave empty)*
+6. Click **Test Connection…**.
+   - If DBeaver asks to download the H2 driver, click **Download**.
+   - You should see **Connected**.
+7. Click **Finish**.
+8. Expand **pizza_flight → Schemas → PUBLIC → Tables** in the Database Navigator. You should see 8 tables:
+   `CUSTOMERS`, `MACHINE_INVENTORY`, `MACHINES`, `ORDER_ITEMS`, `ORDERS`, `PIZZA_TOPPINGS`, `PIZZAS`, `TOPPINGS`.
+
+> **Tip:** To open a new SQL editor in DBeaver, right-click the `pizza_flight` connection and choose **SQL Editor → New SQL Script**. Run a single query with `Ctrl+Enter` (macOS: `Cmd+Enter`).
+
+---
+
+## Resetting the Database
+
+After running `INSERT`, `UPDATE`, `DELETE`, or `CREATE/ALTER TABLE` statements in Tasks 7 and 8, you can reset the database back to its original state at any time using **either** method:
+
+1. **In DBeaver:** Open `database/schema_and_seed.sql` in DBeaver and execute the entire script (`Alt+X` / *Execute SQL Script*).
+2. **With Git:** Close your connection in DBeaver first, then run:
+   ```bash
+   git checkout -- database/pizza_flight.mv.db
+   ```
+
+> **Note:** Please do **not** commit changes to `database/pizza_flight.mv.db` in your branch. Only commit your `solutions.sql` files (and your photos for Tasks 1–3).
+
+---
+
+## Database Schema Reference (For Tasks 4–8)
+
+| Table | Columns | Notes |
+|-------|---------|-------|
+| `machines` | `machine_id` (PK), `code` (UNIQUE), `city`, `location_name`, `status`, `installed_date` | `status`: `'ACTIVE'`, `'MAINTENANCE'`, `'OFFLINE'` |
+| `pizzas` | `pizza_id` (PK), `name` (UNIQUE), `category`, `base_price`, `bake_time_sec`, `is_vegetarian`, `calories` | `category`: `'Classic'`, `'Meat'`, `'Vegetarian'`, `'Special'` |
+| `toppings` | `topping_id` (PK), `name` (UNIQUE), `extra_price`, `is_vegan` | Extra/default pizza toppings |
+| `pizza_toppings` | `pizza_id` (PK, FK → `pizzas`), `topping_id` (PK, FK → `toppings`) | Default toppings on each pizza |
+| `machine_inventory` | `machine_id` (PK, FK → `machines`), `pizza_id` (PK, FK → `pizzas`), `quantity`, `last_restocked` | Current stock per machine & pizza |
+| `customers` | `customer_id` (PK), `first_name`, `last_name`, `email` (UNIQUE), `city`, `loyalty_points`, `registered_date` | Registered loyalty app users |
+| `orders` | `order_id` (PK), `machine_id` (FK → `machines`), `customer_id` (FK → `customers`, nullable), `order_timestamp`, `payment_method`, `total_price`, `order_status` | `customer_id` is `NULL` for walk-up guest orders; `payment_method`: `'CARD'`, `'APP'`, `'CASH'`; `order_status`: `'COMPLETED'`, `'CANCELLED'` |
+| `order_items` | `order_item_id` (PK), `order_id` (FK → `orders`), `pizza_id` (FK → `pizzas`), `quantity`, `unit_price` | Pizzas included in each order |

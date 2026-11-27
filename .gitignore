@@ -1,0 +1,13 @@
+# H2 temporary/lock/trace files
+*.trace.db
+*.lock.db
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE files
+.idea/
+.vscode/
+*.swp
