@@ -59,6 +59,10 @@ following information:
    - Each order contains one or many pizzas, and each pizza can appear in
      zero or many orders. For each pizza in an order, we record the quantity
      ordered and the unit price at the time of purchase.
+   - NOTE: Because a vending machine typically dispenses one pizza at a time,
+     it is ALSO completely legal to model Order <-> Pizza as a 1:N
+     relationship (one pizza per order) instead of N:M (multiple pizzas per
+     order). Both 1:N and N:M are accepted!
 
 
 REQUIRED NOTATION: CHEN NOTATION

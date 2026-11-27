@@ -34,10 +34,11 @@ Follow the standard ERM -> Relational Model mapping rules:
      (forming a composite Primary Key, or using a dedicated surrogate PK).
    - Move any relationship attributes (quantity, last_restocked, unit_price)
      into the junction table.
-   - Check all three M:N relationships from Task 02:
+   - Check the M:N relationships from Task 02:
        * Pizza <-> Topping
        * Machine <-> Pizza (inventory/stock)
-       * Order <-> Pizza (order items)
+       * Order <-> Pizza (order items - only if you modeled it as N:M;
+         if you chose 1:N in Task 02, use a Foreign Key in Order instead)
 
 4. Check Normalization (up to 3NF)
    - 1NF: No repeating groups or multi-valued attributes.
