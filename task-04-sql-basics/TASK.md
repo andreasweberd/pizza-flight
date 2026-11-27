@@ -1,8 +1,8 @@
-# Task 04 — Basic SQL Queries (`SELECT`, `WHERE`, `ORDER BY`, `LIMIT`)
+# Task 04 — Basic SQL Queries (`SELECT`, `WHERE`, `ORDER BY`, `FETCH FIRST`)
 
 ## Objective
 
-Connect **DBeaver** to the Pizza Flight H2 sample database and practice writing fundamental `SELECT` queries.
+Connect **DBeaver** to the Pizza Flight H2 sample database and practice writing fundamental **ANSI SQL** `SELECT` queries. Everything you write follows the SQL standard so it transfers directly to PostgreSQL, Oracle, SQL Server, and other relational databases.
 
 ---
 
@@ -23,7 +23,7 @@ Write one SQL query for each of the following 10 questions in `solutions.sql`:
 3. **Simple filter (`WHERE`):** Find all vending machines located in `'Berlin'`. Show `code`, `location_name`, and `status`.
 4. **Boolean & numeric filter:** Find all **vegetarian** pizzas (`is_vegetarian = TRUE`) that cost **less than 8.50**. Show `name` and `base_price`.
 5. **Sorting (`ORDER BY`):** List all customers (`first_name`, `last_name`, `loyalty_points`) ordered by `loyalty_points` from **highest to lowest**.
-6. **Top N (`ORDER BY` + `LIMIT`):** Find the **3 most expensive** pizzas. Show `name` and `base_price`.
+6. **Top N (`ORDER BY` + `FETCH FIRST ... ROWS ONLY`):** Find the **3 most expensive** pizzas using the ANSI SQL `FETCH FIRST 3 ROWS ONLY` clause. Show `name` and `base_price`.
 7. **Distinct values (`DISTINCT`):** List all unique `city` names where Pizza Flight has vending machines, sorted alphabetically (`A` to `Z`).
 8. **Pattern matching (`LIKE`):** Find all customers whose `email` starts with the letter `'l'` (hint: `LOWER(email) LIKE 'l%'` or `email LIKE 'l%'`). Show `first_name`, `last_name`, and `email`.
 9. **Range & list filters (`BETWEEN` / `IN`):** Find all `COMPLETED` orders placed in **March 2026** (between `TIMESTAMP '2026-03-01 00:00:00'` and `TIMESTAMP '2026-03-31 23:59:59'`). Show `order_id`, `order_timestamp`, `payment_method`, and `total_price`.

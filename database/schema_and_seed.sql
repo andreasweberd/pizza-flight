@@ -5,8 +5,17 @@
 -- the Pizza Flight database to its original state.
 -- =============================================================================
 
--- Drop all existing tables/objects (including any added in Task 08)
-DROP ALL OBJECTS;
+-- Drop existing tables in reverse dependency order (including Task 08 tables)
+DROP TABLE IF EXISTS vouchers;
+DROP TABLE IF EXISTS maintenance_logs;
+DROP TABLE IF EXISTS order_items;
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS machine_inventory;
+DROP TABLE IF EXISTS pizza_toppings;
+DROP TABLE IF EXISTS customers;
+DROP TABLE IF EXISTS toppings;
+DROP TABLE IF EXISTS pizzas;
+DROP TABLE IF EXISTS machines;
 
 -- -----------------------------------------------------------------------------
 -- 1. Vending Machines

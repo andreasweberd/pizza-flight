@@ -18,7 +18,7 @@
 -- 5. List all customers (first_name, last_name, loyalty_points) ordered by loyalty_points DESC.
 
 
--- 6. Find the 3 most expensive pizzas (name, base_price).
+-- 6. Find the 3 most expensive pizzas (name, base_price) using FETCH FIRST 3 ROWS ONLY.
 
 
 -- 7. List all unique cities where Pizza Flight has vending machines, sorted alphabetically.
