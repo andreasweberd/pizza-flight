@@ -81,6 +81,25 @@ Your diagram MUST follow Chen notation:
                     (min,max) notation - be consistent throughout)
 
 
+WHAT IS A PRIMARY KEY?
+------------------------------------------------------------------------------
+A Primary Key (PK) is an attribute (or combination of attributes) that
+UNIQUELY identifies every single record of an entity - like a student ID
+number or a license plate.
+
+A good Primary Key follows three rules:
+  1. UNIQUE   : No two records can ever have the same value.
+                (Example: Two customers could both be named "Max Meyer", so
+                first_name / last_name is NOT a Primary Key - customer_id IS!)
+  2. NOT NULL : Every record MUST have a Primary Key value (never empty).
+  3. STABLE   : It should not change over time. (A customer's email might
+                change later, so an artificial ID like customer_id, pizza_id,
+                machine_id, topping_id, or order_id is usually the best choice.)
+
+In Chen notation, you mark every Primary Key by UNDERLINING the attribute
+name inside its oval.
+
+
 SUBMISSION REQUIREMENTS
 ------------------------------------------------------------------------------
 1. Draw the ERM BY HAND on clean paper (A4 or A3 recommended so nothing is
